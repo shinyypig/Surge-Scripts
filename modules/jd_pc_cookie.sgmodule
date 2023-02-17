@@ -1,6 +1,8 @@
 #!name=JD PC Cookie
 #!desc=获取京东PC网页中的Cookie
 
+# 获取到cookie会显示通知，但是无法直接复制
+# 可以打开 Surge 的日志，找到对应输出，从而复制
 [Script]
 jd_pc_cookie = type=http-request,pattern=^https:\/\/api\.m\.jd\.com\/,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/shinyypig/Surge-Scripts/main/scripts/jd_pc_cookie.js
 
