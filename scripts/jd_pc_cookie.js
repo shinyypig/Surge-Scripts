@@ -9,7 +9,30 @@ if (cookieVal) {
     }
 }
 
-
+/**
+ * [main.js]
+ * const cookieVal = $persistentStore.read(cookieKey)
+ * =>
+ * const chavy = init()
+ * const cookieVal = chavy.getdata(cookieKey)
+ *
+ * $httpClient.get => chavy.get
+ * $httpClient.post => chavy.post
+ * $notification.post => chavy.msg
+ * console.log => chavy.log
+ * $done({}) => chavy.done()
+ *
+ * [main.cookie.js]
+ * const cookieVal = $request.headers['Cookie']
+ * =>
+ * const chavy = init()
+ * const cookieVal = $request.headers['Cookie']
+ *
+ * $persistentStore.write => chavy.setdata
+ * $notification.post => chavy.msg
+ * console.log => chavy.log
+ * $done({}) => chavy.done()
+ */
 function init() {
     isSurge = () => {
         return undefined === this.$httpClient ? false : true
