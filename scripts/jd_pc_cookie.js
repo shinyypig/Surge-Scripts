@@ -1,5 +1,57 @@
-console.log("检测到京东网页");
-let cookie = JSON.stringify($request.headers.cookie);
-console.log("获取到cookie:\n " + cookie);
-$notification.post('成功获取到Cookie', '到log中复制完整Cookie', cookie);
-$done({});
+const chavy = init()
+const cookieKey = 'jd_pc';
+const cookieVal = JSON.stringify($request.headers.cookie);
+
+if (cookieVal) {
+    if (chavy.setdata(cookieVal, cookieKey)) {
+        chavy.msg('成功获取到Cookie', '到log或boxjs(key=jd_pc)中复制完整Cookie', cookieVal);
+        chavy.log(`获取到cookie:\n ${cookieVal}`);
+    }
+}
+
+
+function init() {
+    isSurge = () => {
+        return undefined === this.$httpClient ? false : true
+    }
+    isQuanX = () => {
+        return undefined === this.$task ? false : true
+    }
+    getdata = (key) => {
+        if (isSurge()) return $persistentStore.read(key)
+        if (isQuanX()) return $prefs.valueForKey(key)
+    }
+    setdata = (key, val) => {
+        if (isSurge()) return $persistentStore.write(key, val)
+        if (isQuanX()) return $prefs.setValueForKey(key, val)
+    }
+    msg = (title, subtitle, body) => {
+        if (isSurge()) $notification.post(title, subtitle, body)
+        if (isQuanX()) $notify(title, subtitle, body)
+    }
+    log = (message) => console.log(message)
+    get = (url, cb) => {
+        if (isSurge()) {
+            $httpClient.get(url, cb)
+        }
+        if (isQuanX()) {
+            url.method = 'GET'
+            $task.fetch(url).then((resp) => cb(null, {}, resp.body))
+        }
+    }
+    post = (url, cb) => {
+        if (isSurge()) {
+            $httpClient.post(url, cb)
+        }
+        if (isQuanX()) {
+            url.method = 'POST'
+            $task.fetch(url).then((resp) => cb(null, {}, resp.body))
+        }
+    }
+    done = (value = {}) => {
+        $done(value)
+    }
+    return { isSurge, isQuanX, msg, log, getdata, setdata, get, post, done }
+}
+
+chavy.done()
