@@ -1,6 +1,6 @@
 
 [Script]
-jd_pc_cookie = type=http-request,pattern=^https:\/\/api\.m\.jd\.com\/,requires-body=1,max-size=0,debug=1,script-path=/Scripts/jd_pc_cookie.js
+jd_pc_cookie = type=http-request,pattern=^https:\/\/api\.m\.jd\.com\/,requires-body=1,max-size=0,debug=1,script-path=https://raw.githubusercontent.com/shinyypig/Surge-Scripts/main/scripts/jd_pc_cookie.js
 
 [MITM]
 hostname = api.m.jd.com
