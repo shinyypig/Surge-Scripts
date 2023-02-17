@@ -4,7 +4,7 @@ const cookieVal = JSON.stringify($request.headers.cookie);
 
 if (cookieVal) {
     if (chavy.setdata(cookieVal, cookieKey)) {
-        chavy.msg('成功获取到Cookie', '到log或boxjs(key=jd_pc)中复制完整Cookie');
+        chavy.msg('成功获取到Cookie', '', '到log或boxjs(key=jd_pc)中复制完整Cookie');
         chavy.log(`获取到cookie:\n ${cookieVal}`);
     }
 }
