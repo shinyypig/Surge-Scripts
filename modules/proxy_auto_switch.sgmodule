@@ -1,0 +1,5 @@
+#!name=Proxy Auto Switch
+#!desc=判断网络是否能够连接谷歌，如果不能则自动切换代理
+
+[Script]
+proxy_auto_switch = type=event,event-name=network-changed,timeout=10,debug=1,script-path=https://raw.githubusercontent.com/shinyypig/Surge-Scripts/main/scripts/proxy_auto_switch.js
