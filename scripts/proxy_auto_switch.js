@@ -32,17 +32,16 @@ if (ssid == prev_ssid) {
 
     setTimeout(() => {
         if (flag) {
-            $.msg("使用直连", "", "该网络可以直接连接谷歌")
-            console.log("不切换代理")
+            $.msg("Outbound Mode: Direct", "", "Can directly connect to Google.")
+            console.log("使用直连")
         } else {
-            $.msg("使用代理", "", "该网络不可以直接连接谷歌")
+            $.msg("Outbound Mode: Rule", "", "Can not directly connect to Google.")
             console.log("切换代理")
             $surge.setOutboundMode("rule")
 
         }
+        $.done()
     }, 8000)
-
-    $.done()
 }
 
 // Env.min.js
