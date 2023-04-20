@@ -4,6 +4,10 @@
 
 ## 脚本列表
 
+- [JD Cookie](modules/jd_cookie.sgmodule)：获取京东移动端Cookie，安装链接：
+  
+    [https://raw.githubusercontent.com/shinyypig/Surge-Scripts/main/modules/jd_cookie.sgmodule](https://raw.githubusercontent.com/shinyypig/Surge-Scripts/main/modules/jd_cookie.sgmodule)
+
 - [JD PC Cookie](modules/jd_pc_cookie.sgmodule)：获取京东PC端Cookie，安装链接：
   
     [https://raw.githubusercontent.com/shinyypig/Surge-Scripts/main/modules/jd_pc_cookie.sgmodule](https://raw.githubusercontent.com/shinyypig/Surge-Scripts/main/modules/jd_pc_cookie.sgmodule)
