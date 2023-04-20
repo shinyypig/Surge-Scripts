@@ -1,0 +1,8 @@
+#!name=JD Cookie
+#!desc=获取京东Cookie
+
+[Script]
+jd_cookie=type=http-request,pattern=^https:\/\/home\.m\.jd\.com\/myJd\/ ,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/shinyypig/Surge-Scripts/main/scripts/jd_cookie.js
+
+[MITM]
+hostname = *.m.jd.com

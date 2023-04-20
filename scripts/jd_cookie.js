@@ -1,14 +1,27 @@
 const chavy = init();
-const cookieKey = 'jd_pc';
-const cookieVal = JSON.stringify($request.headers.cookie);
 
-if (cookieVal) {
-    if (chavy.setdata(cookieVal, cookieKey)) {
-        chavy.msg('成功获取到Cookie', '', '到log或boxjs(key=jd_pc)中复制完整Cookie');
-        chavy.log(`获取到cookie:\n ${cookieVal}`);
-    }
-}
-chavy.done()
+const cookie2object = (cookie) => {
+  var obj = {};
+  var arr = cookie.split("; ");
+  arr.forEach(function (val) {
+    var brr = val.split("=");
+    obj[brr[0]] = brr[1];
+  });
+  return obj;
+};
+const config = {
+  cookie: {},
+  headers: {}
+};
+
+config.headers = $request.headers;
+config.cookie = cookie2object(config.headers.Cookie);
+var nessary_headers = {};
+nessary_headers.Cookie = `pt_key=${config.cookie.pt_key}; pt_pin=${config.cookie.pt_pin}`;
+console.log(JSON.stringify(nessary_headers));
+chavy.msg("京东cookie获取", "获取成功", JSON.stringify(nessary_headers));
+chavy.done();
+
 
 /**
  * [main.js]
