@@ -1,0 +1,7 @@
+#!name=Chrome UA
+#!desc=访问google.com时，自动切换到Chrome UA
+[MITM]
+hostname = %APPEND% *.google.com, google.com
+
+[Script]
+chrome-ua = type=http-request,pattern=^http(s)?:\/\/(?:.*\.)?google\.com,script-path=https://raw.githubusercontent.com/shinyypig/Surge-Scripts/main/scripts/chrome_ua.js,requires-body=false
